@@ -7,12 +7,20 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js"
   },
-  "author": "",
+  "author": "hannah elliott",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
     "fs": "0.0.1-security",
     "path": "^0.12.7",
     "uuid": "^8.3.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nova-codes/note-taker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nova-codes/note-taker/issues"
+  },
+  "homepage": "https://github.com/nova-codes/note-taker#readme"
 }
