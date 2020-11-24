@@ -11,3 +11,17 @@ const { v4: uuidv4 } = require('uuid');
 app.use(express.json()); 
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true })); 
+
+// html routes
+app.get('/notes', function(req, res){
+    res.sendFile(path.join(__dirname + '/public/', 'notes.html'));
+}); 
+
+app.get('*', function(req, res){
+    res.sendFile(path.join(__dirname + '/public/', 'index.html'));
+});
+
+// api routes
+app.get('/api/notes', function(req, res){
+    res.json(db); 
+});
