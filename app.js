@@ -39,14 +39,20 @@ app.get('/api/notes', function(req, res){
 app.post('/api/notes', function(req, res){
     req.body.id = uuidv4();
     db.push(req.body);
-    fs.writeFile('./db/db.json', JSON.stringify(db), error());
+    fs.writeFile('./db/db.json', JSON.stringify(db), function(err){
+        if(err) throw err;
+        res.json(db);
+    });
 });
 
 // delete - receive query param containing unique id of note to delete.
 // read all notes from db.json, remove note with id, rewrite notes to db.json
 app.delete('/api/notes/all', function(req, res){
     db.splice(0, db.length); 
-    fs.writeFile('./db/db.json', JSON.stringify(db), error());
+    fs.writeFile('./db/db.json', JSON.stringify(db), function(err){
+        if(err) throw err;
+        res.json(db);
+    });
 });
 
 app.delete('/api/notes/:id', function(req, res){
@@ -56,7 +62,10 @@ app.delete('/api/notes/:id', function(req, res){
             db.splice(i, 1);
         }
     }
-    fs.writeFile('./db/db.json', JSON.stringify(db), error());
+    fs.writeFile('./db/db.json', JSON.stringify(db), function(err){
+        if(err) throw err;
+        res.json(db);
+    });
 });
 
 // maybe a server thing
